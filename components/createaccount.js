@@ -7,16 +7,16 @@ function CreateAccount() {
   const ctx = React.useContext(UserContext);
 
   function validate(field, label) {
+    let isValid = true;
     if (!field) {
       setStatus("[" + label + "] required.");
-      setTimeout(() => setStatus(""), 3000);
-      return false;
+      isValid = false;
     } else if (label == "password" && field.length < 8) {
       setStatus("[password] must be 8 or more characters.");
-      setTimeout(() => setStatus(""), 3000);
-      return false;
+      isValid = false;
     }
-    return true;
+    if (!isValid) setTimeout(() => setStatus(""), 5000);
+    return isValid;
   }
 
   function handleCreate() {
@@ -37,7 +37,6 @@ function CreateAccount() {
 
   return (
     <Card
-      // bgcolor="primary"
       header="Create Account"
       status={status}
       body={
@@ -85,7 +84,6 @@ function CreateAccount() {
               Create Account
             </button>
             <br />
-            <span style={{ color: "red" }}>{status}</span>
           </>
         ) : (
           <>
