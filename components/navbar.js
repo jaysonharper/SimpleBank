@@ -1,8 +1,29 @@
 function NavBar() {
+  function addNavBorder(e) {
+    // Clear all borders first
+    document.getElementById("home").style.border = "none";
+    const navItems = document.getElementsByClassName("nav-item");
+    for (let item of navItems) {
+      item.style.border = "none";
+    }
+    // Add border to current target
+    if (e.currentTarget.id == "home") {
+      e.currentTarget.style.borderBottom = "solid";
+    } else {
+      e.currentTarget.style.border = "solid";
+    }
+  }
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" title="Home Page" href="#">
+        <a
+          id="home"
+          className="navbar-brand"
+          title="Home Page"
+          href="#"
+          style={{borderBottom: "solid"}}
+          onClick={addNavBorder}
+        >
           Harper Bank
         </a>
         <button
@@ -18,7 +39,7 @@ function NavBar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item">
+            <li className="nav-item" onClick={addNavBorder}>
               <a
                 className="nav-link"
                 title="Create New Account"
@@ -27,17 +48,17 @@ function NavBar() {
                 Create Account
               </a>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" onClick={addNavBorder}>
               <a className="nav-link" title="Deposit Money" href="#/deposit/">
                 Deposit
               </a>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" onClick={addNavBorder}>
               <a className="nav-link" title="Withdraw Money" href="#/withdraw/">
                 Withdraw
               </a>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" onClick={addNavBorder}>
               <a className="nav-link" title="All User Data" href="#/alldata/">
                 AllData
               </a>
