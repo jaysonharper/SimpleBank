@@ -37,6 +37,7 @@ function CreateAccount() {
 
   return (
     <Card
+      maxWidth="18rem"
       header="Create Account"
       status={status}
       body={

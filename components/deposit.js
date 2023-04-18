@@ -1,7 +1,8 @@
 function Deposit() {
   const [status, setStatus] = React.useState("");
   const [deposit, setDeposit] = React.useState(0);
-  const currUser = React.useContext(UserContext).users[0];
+  const currUserIndex = React.useContext(UserContext).users.length - 1;
+  const currUser = React.useContext(UserContext).users[currUserIndex];
 
   function valid() {
     if (deposit < 0) {
@@ -29,6 +30,7 @@ function Deposit() {
 
   return (
     <Card
+      maxWidth="18rem"
       header={"Deposit | " + currUser.name}
       status={status}
       body={

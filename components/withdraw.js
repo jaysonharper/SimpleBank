@@ -1,15 +1,15 @@
 function Withdraw() {
   const [status, setStatus] = React.useState("");
   const [withdraw, setWithdraw] = React.useState(0);
-  const currUser = React.useContext(UserContext).users[0];
+  const currUserIndex = React.useContext(UserContext).users.length - 1;
+  const currUser = React.useContext(UserContext).users[currUserIndex];
 
   function valid() {
     let isValid = true;
     if (withdraw < 0) {
       setStatus("Withdraw amount cannot be negative.");
       isValid = false;
-    }
-    else if (withdraw > currUser.balance) {
+    } else if (withdraw > currUser.balance) {
       setStatus("Funds not available.");
       isValid = false;
     }
@@ -34,6 +34,7 @@ function Withdraw() {
 
   return (
     <Card
+      maxWidth="18rem"
       header={"Withdraw | " + currUser.name}
       status={status}
       body={

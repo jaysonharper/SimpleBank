@@ -32,7 +32,7 @@ function AllDataTable() {
         <td>{email}</td>
         <td>{name}</td>
         <td>{password}</td>
-        <td>{balance}</td>
+        <td>${balance}</td>
       </tr>
     );
   });
@@ -42,7 +42,7 @@ function AllDataTable() {
       <table className="table">
         <tbody>
           {userHeaders[0]}
-          {userData[0]}
+          {userData}
         </tbody>
       </table>
     </div>
